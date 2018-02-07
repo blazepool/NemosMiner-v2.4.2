@@ -1,4 +1,9 @@
- # NemosMiner-v2.4.2
+ # NemosMiner-v2.4.2 - www.blazepool.com
+ 
+Status API: http://api.blazepool.com/status
+
+Stratum Servers: .mine.blazepool.com
+ 
 NemosMiner-v2.4.2 Monitors mining pools in real-time in order to find the most profitable Algo /
  Auto Benchmarks Each algo to get optimal speeds / 
 Fully automated / 
