@@ -18,11 +18,12 @@ $blazepool_Request | Get-Member -MemberType NoteProperty | Select-Object -Expand
     $Divisor = 1000000
 	
     switch ($blazepool_Algorithm) {
-    
-        "equihash"{$Divisor /= 1000}
-        "blake2s"{$Divisor *= 1000}
+	“blake2s"{$Divisor *= 1000}
         "blakecoin"{$Divisor *= 1000}
-        "decred"{$Divisor *= 1000}
+        "keccak"{$Divisor *= 1000}
+        "scrypt"{$Divisor *= 1000}
+        "x11"{$Divisor *= 1000}
+        "yescrypt"{$Divisor /= 1000}
     }
 
     if ((Get-Stat -Name "$($Name)_$($blazepool_Algorithm)_Profit") -eq $null) {$Stat = Set-Stat -Name "$($Name)_$($blazepool_Algorithm)_Profit" -Value ([Double]$blazepool_Request.$_.estimate_last24h / $Divisor)}
