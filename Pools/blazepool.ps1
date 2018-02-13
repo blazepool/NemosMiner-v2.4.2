@@ -20,8 +20,8 @@ $blazepool_Request | Get-Member -MemberType NoteProperty | Select-Object -Expand
     switch ($blazepool_Algorithm) {
     	"sha256"{$Divisor *= 1000000}
 	"sha256t"{$Divisor *= 1000000}
-	“blake"{$Divisor *= 1000}
-	“blake2s"{$Divisor *= 1000}
+	"blake"{$Divisor *= 1000}
+	"blake2s"{$Divisor *= 1000}
         "blakecoin"{$Divisor *= 1000}
 	"decred"{$Divisor *= 1000}
         "keccak"{$Divisor *= 1000}
