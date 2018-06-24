@@ -15,23 +15,7 @@ $blazepool_Request | Get-Member -MemberType NoteProperty | Select-Object -Expand
     $blazepool_Algorithm = Get-Algorithm $blazepool_Request.$_.name
     $blazepool_Coin = ""
 
-    $Divisor = 1000000
-	
-    switch ($blazepool_Algorithm) {
-    	"sha256"{$Divisor *= 1000000}
-	"sha256t"{$Divisor *= 1000000}
-	"blake"{$Divisor *= 1000}
-	"blake2s"{$Divisor *= 1000}
-        "blakecoin"{$Divisor *= 1000}
-	"decred"{$Divisor *= 1000}
-        "keccak"{$Divisor *= 1000}
-	"keccakc"{$Divisor *= 1000}
-	"vanilla"{$Divisor *= 1000}
-        "scrypt"{$Divisor *= 1000}
-        "x11"{$Divisor *= 1000}
-	"equihash"{$Divisor /= 1000}
-        "yescrypt"{$Divisor /= 1000}
-    }
+    $Divisor = 1000000 * [Double]$blazepool_Request.$_.mbtc_mh_factor
 
     if ((Get-Stat -Name "$($Name)_$($blazepool_Algorithm)_Profit") -eq $null) {$Stat = Set-Stat -Name "$($Name)_$($blazepool_Algorithm)_Profit" -Value ([Double]$blazepool_Request.$_.estimate_last24h / $Divisor)}
     else {$Stat = Set-Stat -Name "$($Name)_$($blazepool_Algorithm)_Profit" -Value ([Double]$blazepool_Request.$_.estimate_current / $Divisor)}
